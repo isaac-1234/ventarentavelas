@@ -2,10 +2,13 @@
 #include<vector>
 #include"Cliente1.h"
 #include<fstream>
-
+#include "DetalleVector.h"
+#include "ProductoVector.h"
+#include "VectorVenta.h"
+ 
 using std::stoi;
 using namespace std;
-
+ 
 class ClienteVector
 {
     private:
@@ -95,7 +98,7 @@ class ClienteVector
                     archivoCliente.open("DATOS DE LOS CLIENTES.txt",ios::app);
                     if(archivoCliente.is_open())
                     {
-                        archivoCliente<<cliente.getId_Cliente()<<";"<<cliente.getNombre()<<";"<<cliente.getApellidos()<<";"<<cliente.getDomicilio()<<";"<<cliente.getMunicipio()<<";"<<cliente.getEstado()<<";"<<cliente.getTelefono()<<";"<<cliente.getRfc_cliente()<<";"<<cliente.getTipo_nuevo_frecuente()<<";"<<end1;
+                        archivoCliente<<cliente.getId_cliente()<<";"<<cliente.getNombre()<<";"<<cliente.getApellidos()<<";"<<cliente.getDomicilio()<<";"<<cliente.getMunicipio()<<";"<<cliente.getEstado()<<";"<<cliente.getTelefono()<<";"<<cliente.getRfc_cliente()<<";"<<cliente.getTipo_nuevo_frecuente()<<";"<<end1;
                         archivoCliente.close();
                     }
                 }
@@ -155,7 +158,7 @@ class ClienteVector
                             cliente.setTelefono(temporal[6]);
                             cliente.setRfc_cliente(temporal[7]);
                             cliente.setTipo_nuevo_frecuente(temporal[8]);
-
+ 
                             agregar(cliente);
                         }
                     }
