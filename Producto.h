@@ -1,7 +1,6 @@
-
 #include<string>
 using namespace std;
-
+ 
 class Producto
 {
 private:
@@ -15,11 +14,11 @@ private:
 public:
     Producto()
     {
-
+ 
     }
     ~Producto()
     {
-
+ 
     }
     void setCantidad(int cantidad){
         this->cantidad = cantidad;
@@ -60,7 +59,7 @@ public:
     {
         return this->origen_stock_wo_compra;
     }
-    float getPreio()
+    float getPrecio()
     {
         return this->precio;
     }
