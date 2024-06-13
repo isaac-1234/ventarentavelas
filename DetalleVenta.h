@@ -1,3 +1,6 @@
+#include <iostream> using namespace std; cl... de Silvia MDL
+Silvia MDL
+10:44 p. m.
 #include <iostream>
 using namespace std;
 class DetalleVenta
@@ -11,11 +14,11 @@ float precio;
 public:
 DetalleVenta()
 {
-
+ 
 }
 ~DetalleVenta()
 {
-
+ 
 }
 void setId_venta(int _id_venta)
 {
@@ -61,5 +64,5 @@ string getNombre_producto()
 {
     return this->nombre_producto;
 }
-
+ 
 };
