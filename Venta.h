@@ -13,11 +13,11 @@ private:
 public:
     Venta()
     {
-
+ 
     }
     ~Venta()
     {
-
+ 
     }
     void setId_venta(int _id_venta)
     {
