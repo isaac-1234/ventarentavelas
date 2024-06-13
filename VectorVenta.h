@@ -1,3 +1,6 @@
+#include<iostream> #include<vector> #includ... de Silvia MDL
+Silvia MDL
+10:50 p. m.
 #include<iostream>
 #include<vector>
 #include "Venta.h"
@@ -34,7 +37,7 @@ public:
                     }
                 }
                 archivoVenta.close();
-            } 
+            }
         }
         catch(exception e)
         {
@@ -107,7 +110,7 @@ public:
                         venta.setTiempo_entrega(std::stoi(temporal[4]));
                         venta.setId_cliente(std::stoi(temporal[5]));
                         venta.setTotal(std::stof(temporal[6]));
-
+ 
                         agregar(venta);
                     }
                 }
@@ -120,5 +123,5 @@ public:
         }
         
     }
-
+ 
 };
