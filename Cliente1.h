@@ -1,7 +1,7 @@
 #include <iostream>
 #pragma once
 using namespace std;
-
+ 
 class Cliente1
 {
     private:
@@ -83,6 +83,11 @@ class Cliente1
     {
         return rfc_cliente;
     }
+    string getTipo_nuevo_frecuente()
+    {
+        return tipo_nuevo_frecuente;
+    }
+};
     string getTipo_nuevo_frecuente()
     {
         return tipo_nuevo_frecuente;
