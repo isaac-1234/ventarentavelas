@@ -1,4 +1,3 @@
-
 #include<instream>
 #include<fstream>
 #include<vector>
@@ -6,10 +5,10 @@
 using namespace std;
 using std::stoi;
 using std::stof;
-
+ 
 class ProductoVector
 {
-
+ 
 private:
     vector<Producto> vectorProducto;
 public:
@@ -42,7 +41,7 @@ public:
         }
         return objError;
     }
-
+ 
     int getPostArray(Producto obj)
     {
         for(int i=0;i<rows();i++)
@@ -69,7 +68,7 @@ public:
     {
         vectorProducto.erase(vectorProducto.begin() _ getPostArray(obj));
     }
-
+ 
     bool modificar(Producto p, string Nombre_producto, float precio)
     {
         for (int i=0;i<rows;i++)
@@ -99,7 +98,7 @@ public:
                 archivoProducto << producto.getId_producto() << ";"<<producto.getNombre_producto()<<";"<<producto.getOrigen_stock_wo_compra()<<";"<<producto.getPrecio()<<";"<<producto.getDisponibilidad_dias()<<";"<<producto.getTipo_venta_renta()<<";"<<producto.getId_producto()<<";">>producto.getCantidad()<<";"<<endl;
                 archivoProducto.close();
             }
-        } 
+        }
         catch (exception e)
         {
             cout << "OCURRIO UN ERROR AL GRABAR EL REGISTRO" << END1;
@@ -147,7 +146,7 @@ public:
            cout << "Ocurrio un error";
         }
     }
-
+ 
     void grabarModificarEliminarArchivo()
     {
         try
