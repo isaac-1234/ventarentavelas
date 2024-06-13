@@ -830,7 +830,7 @@ void vistaVenta() //es el renglon 908
 
             if (estado == 1)
             {
-                cout << "**GRACIAS POR SU VISITA!**" ENDL;
+                cout << "**GRACIAS POR SU VISITA!**" endl;
                 Factura factura;
 
                 factura.setId_venta(c+1);
