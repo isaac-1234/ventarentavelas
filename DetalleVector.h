@@ -6,7 +6,7 @@
 using namespace std;
 using std::stof;
 using std::stoi;
-
+ 
 class DetalleVector
 {
 private:
@@ -14,7 +14,7 @@ private:
 public:
     DetalleVector()
     {
-
+ 
     }
     void add(DetalleVenta obj)
     {
@@ -28,7 +28,7 @@ public:
     {
         return detalleVector.size();
     }
-
+ 
     void grabarArchivo()
     {
         try
@@ -79,7 +79,7 @@ public:
                         detalle.setId_producto(std::stoi(temporal[2]));
                         detalle.setCantidad(std::stoi(temporal[3]));
                         detalle.setPrecio(std::stof(temporal[4]));
-
+ 
                         add(detalle);
                     }
                 }
