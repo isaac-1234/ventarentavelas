@@ -88,8 +88,3 @@ class Cliente1
         return tipo_nuevo_frecuente;
     }
 };
-    string getTipo_nuevo_frecuente()
-    {
-        return tipo_nuevo_frecuente;
-    }
-};
