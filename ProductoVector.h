@@ -1,4 +1,4 @@
-#include<instream>
+#include<iostream>
 #include<fstream>
 #include<vector>
 #include"Producto.h"
@@ -34,7 +34,7 @@ public:
         objError.setNombre_producto("ERROR");
         for(Producto x : vectorProducto)
         {
-            if (Id_prod) == x.getId_producto())
+            if ((id_prod) == x.getId_producto())
             {
                 return x;
             }
@@ -61,12 +61,12 @@ public:
         }
         else
         {
-            return vectorProducto[vectorProducto.size() - 1].getId_producto() +1;
+            return vectorProducto[vectorProducto.size() - 1].getId_producto()+1;
         }
     }
     void remove(Producto obj)
     {
-        vectorProducto.erase(vectorProducto.begin() _ getPostArray(obj));
+        vectorProducto.erase(vectorProducto.begin() getPostArray(obj));
     }
  
     bool modificar(Producto p, string Nombre_producto, float precio)
@@ -75,7 +75,7 @@ public:
         {
             if (p.getId_producto() == get(i).getId_producto())
             {
-                vectorProducto[i].setNombre_producto(nombre_producto);
+                vectorProducto[i].setNombre_producto(Nombre_producto);
                 vectorProducto[i].setOrigen_stock_wo_compra(origen_stock_wo_compra);
                 vectorProducto[i].setPrecio(precio);
                 vectorProducto[i].setDisponibilidad_dias(disponibilidad_dias);

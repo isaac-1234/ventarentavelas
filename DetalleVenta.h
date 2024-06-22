@@ -1,6 +1,3 @@
-#include <iostream> using namespace std; cl... de Silvia MDL
-Silvia MDL
-10:44 p. m.
 #include <iostream>
 using namespace std;
 class DetalleVenta

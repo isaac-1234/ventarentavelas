@@ -1,11 +1,9 @@
-#pragma once
 #include<iostream>
 #include<stdlib.h>
 #include<stdio.h>
-#include<windows.h>
 #include<vector>
 #include<cstring>
-#include<conio.h>
+#include <curses.h> 
 
 #include "Vector_cliente.h"
 #include "ProductoVector.h"

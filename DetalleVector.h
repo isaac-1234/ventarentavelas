@@ -76,7 +76,7 @@ public:
                         DetalleVenta detalle;
                         detalle.setId_venta(std::stoi(temporal[0]));
                         detalle.setNombre_producto(temporal[1]);
-                        detalle.setId_producto(std::stoi(temporal[2]));
+                        detalle.setId_producto((temporal[2]));
                         detalle.setCantidad(std::stoi(temporal[3]));
                         detalle.setPrecio(std::stof(temporal[4]));
  
