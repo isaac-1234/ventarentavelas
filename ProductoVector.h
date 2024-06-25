@@ -1,6 +1,7 @@
 #include<iostream>
 #include<fstream>
 #include<vector>
+#include<string>
 #include"Producto.h"
 using namespace std;
 using std::stoi;
@@ -66,7 +67,7 @@ public:
     }
     void remove(Producto obj)
     {
-        vectorProducto.erase(vectorProducto.begin() getPostArray(obj));
+        vectorProducto.erase(vectorProducto.begin() _getPostArray(obj));
     }
  
     bool modificar(Producto p, string Nombre_producto, float precio)
@@ -95,13 +96,13 @@ public:
             archivoProducto.open("PRODUCTOS.txt", ios::app)//ABRIR EL ARCHIVO
             if (archivoProducto.is_open())
             {
-                archivoProducto << producto.getId_producto() << ";"<<producto.getNombre_producto()<<";"<<producto.getOrigen_stock_wo_compra()<<";"<<producto.getPrecio()<<";"<<producto.getDisponibilidad_dias()<<";"<<producto.getTipo_venta_renta()<<";"<<producto.getId_producto()<<";">>producto.getCantidad()<<";"<<endl;
+                archivoProducto <<producto.getId_producto() << ";"<<producto.getNombre_producto()<<";"<<producto.getOrigen_stock_wo_compra()<<";"<<producto.getPrecio()<<";"<<producto.getDisponibilidad_dias()<<";"<<producto.getTipo_venta_renta()<<";"<<producto.getId_producto()<<";"<<producto.getCantidad()<<";"<<endl;
                 archivoProducto.close();
             }
         }
         catch (exception e)
         {
-            cout << "OCURRIO UN ERROR AL GRABAR EL REGISTRO" << END1;
+            cout << "OCURRIO UN ERROR AL GRABAR EL REGISTRO" <<END1;
         }
     }
     void cargarDatosDelArchivoAlVector()
@@ -125,7 +126,7 @@ public:
                         {
                             temporal[i] = linea.substr(0,posi);
                             linea.erase(0, posi + 1);
-                                i++
+                                i++;
                         }
                         Producto.producto;
                         producto.setNombre_producto(std::stoi(temporal[0]));

@@ -37,7 +37,7 @@ void setNombre_producto(string _nombre_producto)
 {
     nombre_producto = _nombre_producto;
 }
-int getId_venta()
+string getId_venta()
 {
     return this->id_venta;
 }
