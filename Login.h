@@ -8,15 +8,15 @@ private:
 public:
     Login()
     {
- 
+
     }
     ~Login()
     {
- 
+
     }
     void setUsuario(string _usuario)
     {
-    usuario = _usuario;
+        usuario = _usuario;
     }
     void setContrasenia(string _contrasenia)
     {
