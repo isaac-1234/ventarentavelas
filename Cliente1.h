@@ -1,7 +1,7 @@
 #include <iostream>
 #pragma once
 using namespace std;
- 
+
 class Cliente1
 {
     private:
@@ -10,7 +10,7 @@ class Cliente1
     string domicilio;
     string municipio;
     string estado;
-    int telefono;
+    string telefono;
     string rfc_cliente;
     string tipo_nuevo_frecuente;
     int id_cliente;
@@ -35,7 +35,7 @@ class Cliente1
     {
         this->estado = estado;
     }
-    void setTelefono(int telefono)
+    void setTelefono(string telefono)
     {
         this->telefono = telefono;
     }
@@ -71,7 +71,7 @@ class Cliente1
     {
         return estado;
     }
-    int getTelefono()
+    string getTelefono()
     {
         return telefono;
     }
