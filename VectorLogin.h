@@ -8,7 +8,7 @@ class Vectorlogin
 private:
     vector <Login> VectorLogin;
 public:
- 
+
     void Add(Login log)
     {
         VectorLogin.push_back(log);
@@ -35,7 +35,7 @@ public:
         }
         catch(exception L)
         {
-            cout<<"OCURRIO UN ERROR AL GRABAR EL REGISTRO"<<endl;
+            cout<<"ERROR AL GUARDAR EL REGISTRO"<<endl;
         }
     }
     void guardarDatosArchivo()
@@ -52,7 +52,7 @@ public:
             {
                 while(!archivoLogin.eof())
                 {
-                    while(getline(archivoLogin,linea))//ESTA LINEA TIENE LA FUNCION PARA QUE LOS DATOS SE GUARDEN EN LINEAS, COMO LINEA 1, CONSECUTIVAMENTE...
+                    while(getline(archivoLogin,linea))//PARA QUE LOS DATOS SE GUARDENN EN LINEAS, COMO LINEA 1, CONSECUTIVAMENTE...
                     {
                         i=0;
                         while((posi = linea.find(".")) != string::npos) //ESTA FUNCION PARTE LA LINEA HASTA ENCONTRAR EL PUNTO
@@ -63,13 +63,13 @@ public:
                         }
                         //CREAR OBJETO VENDEDOR
                         Login login;
- 
+
                         login.setUsuario(temporal[1]);
                         login.setContrasenia(temporal[2]);
- 
-                        //ESTOS DATOS GUARDADOS SE AGREGARAN A NUESTRA ADDVENDEDOR
+
+                        //LOS DATOS GUARDADOS SE AGREGAN A ADDVENDEDOR
                         Add(login);
- 
+
                     }
                 }
             }
@@ -77,7 +77,7 @@ public:
         }
         catch(exception L)
         {
-            cout<<"OCURRIO UN PROBLEMA EN EL ARCHIVO"<<endl; //MINUTO 5:14
+            cout<<"OCURRIO UN PROBLEMA EN EL ARCHIVO"<<endl;
         }
     }
 };
