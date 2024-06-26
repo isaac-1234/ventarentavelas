@@ -76,3 +76,4 @@ public:
         return this->id_producto;
     }
 };
+
