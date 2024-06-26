@@ -1,15 +1,15 @@
+
 #include<iostream>
 #include<fstream>
 #include<vector>
-#include<string>
 #include"Producto.h"
 using namespace std;
 using std::stoi;
 using std::stof;
- 
+
 class ProductoVector
 {
- 
+
 private:
     vector<Producto> vectorProducto;
 public:
@@ -29,20 +29,20 @@ public:
     {
         return vectorProducto.size();
     }
-    Producto buscarPorId_producto(string id_prod)//BUSCAR el PRODUCTO
+    Producto buscarPorId_producto(int code)//busca el producto
     {
         Producto objError;
         objError.setNombre_producto("ERROR");
         for(Producto x : vectorProducto)
         {
-            if ((id_prod) == x.getId_producto())
+            if (code == x.getId_producto())
             {
                 return x;
             }
         }
         return objError;
     }
- 
+
     int getPostArray(Producto obj)
     {
         for(int i=0;i<rows();i++)
@@ -62,26 +62,25 @@ public:
         }
         else
         {
-            return vectorProducto[vectorProducto.size() - 1].getId_producto()+1;
+            return vectorProducto[vectorProducto.size() - 1].getId_producto() + 1;
         }
     }
     void remove(Producto obj)
     {
-        vectorProducto.erase(vectorProducto.begin() _getPostArray(obj));
+        vectorProducto.erase(vectorProducto.begin() + getPostArray(obj));
     }
- 
-    bool modificar(Producto p, string Nombre_producto, float precio)
+
+    bool modificar(Producto p, string nombre_producto, float precio, string origen_stock_wo_compra, int disponibilidad_dias, string tipo_venta_renta, int id_producto, int cantidad)
     {
-        for (int i=0;i<rows;i++)
+        for (int i=0;i<rows();i++)
         {
             if (p.getId_producto() == get(i).getId_producto())
             {
-                vectorProducto[i].setNombre_producto(Nombre_producto);
+                vectorProducto[i].setNombre_producto(nombre_producto);
                 vectorProducto[i].setOrigen_stock_wo_compra(origen_stock_wo_compra);
                 vectorProducto[i].setPrecio(precio);
                 vectorProducto[i].setDisponibilidad_dias(disponibilidad_dias);
                 vectorProducto[i].setTipo_venta_renta(tipo_venta_renta);
-                vectorProducto[i].setId_producto(id_producto);
                 vectorProducto[i].setCantidad(cantidad);
                 return true;
             }
@@ -93,16 +92,16 @@ public:
         try       //PARA SABER SI HAY EXCEPCION
         {
             fstream archivoProducto; //int numero
-            archivoProducto.open("PRODUCTOS.txt", ios::app)//ABRIR EL ARCHIVO
+            archivoProducto.open("PRODUCTOS.txt", ios::app);//ABRIR EL ARCHIVO
             if (archivoProducto.is_open())
             {
-                archivoProducto <<producto.getId_producto() << ";"<<producto.getNombre_producto()<<";"<<producto.getOrigen_stock_wo_compra()<<";"<<producto.getPrecio()<<";"<<producto.getDisponibilidad_dias()<<";"<<producto.getTipo_venta_renta()<<";"<<producto.getId_producto()<<";"<<producto.getCantidad()<<";"<<endl;
+                archivoProducto << producto.getId_producto() << ";" <<producto.getNombre_producto()<< ";" <<producto.getOrigen_stock_wo_compra()<< ";" <<producto.getPrecio()<< ";" <<producto.getDisponibilidad_dias()<< ";" <<producto.getTipo_venta_renta()<< ";" <<producto.getId_producto()<< ";" <<producto.getCantidad()<< ";" <<endl;
                 archivoProducto.close();
             }
-        }
+        } 
         catch (exception e)
         {
-            cout << "OCURRIO UN ERROR AL GRABAR EL REGISTRO" <<END1;
+            cout << "OCURRIO UN ERROR AL GRABAR EL REGISTRO" << endl;
         }
     }
     void cargarDatosDelArchivoAlVector()
@@ -112,7 +111,7 @@ public:
             int i;
             size_t posi;
             string linea;
-            string temporal[6];
+            string temporal[7];
             fstream archivoProducto;
             archivoProducto.open("PRODUCTOS.txt", ios::in);
             if (archivoProducto.is_open())
@@ -128,26 +127,26 @@ public:
                             linea.erase(0, posi + 1);
                                 i++;
                         }
-                        Producto.producto;
-                        producto.setNombre_producto(std::stoi(temporal[0]));
-                        producto.setOrigen_stock_wo_compra(temporal[1]);
-                        producto.setDisponibilidad_dias(temporal[2]);
-                        producto.setTipo_venta_renta(temporal[3]);
-                        producto.setId_producto(temporal[4]);
-                        producto.setCantidad(temporal[5]);
+                        Producto producto;
+                        producto.setId_producto(std::stoi(temporal[0]));
+                        producto.setNombre_producto(temporal[1]);
+                        producto.setOrigen_stock_wo_compra(temporal[2]);
+                        producto.setDisponibilidad_dias(std::stoi(temporal[3]));
+                        producto.setTipo_venta_renta(temporal[4]);
+                        producto.setCantidad(std::stoi(temporal[5]));
                         producto.setPrecio(std::stof(temporal[6]));
                         add(producto);
                     }
                 }
             }
-            archivoProducto.clase();
+            archivoProducto.close();
         }
         catch (exception e)
         {
            cout << "Ocurrio un error";
         }
     }
- 
+
     void grabarModificarEliminarArchivo()
     {
         try
@@ -159,7 +158,7 @@ public:
                 for (Producto x : vectorProducto)
                 {
                     archivoProducto <<
-                        x.getId_producto() <<";"<<x.getNombre_producto()<<";"<<x.getOrigen_stock_wo_compra()<<";"<<x.getPrecio()<<";"<<x.getDisponibilidad_dias()<<";"<<x.getTipo_venta_renta()<<";"<<x.getId_producto()<<";">>x.getCantidad()<<";"<< "\n";
+                        x.getId_producto() <<";"<<x.getNombre_producto()<<";"<<x.getOrigen_stock_wo_compra()<<";"<<x.getPrecio()<<";"<<x.getDisponibilidad_dias()<<";"<<x.getTipo_venta_renta()<<";"<<x.getId_producto()<<";"<<x.getCantidad()<<";"<< "\n";
                 }
                 archivoProducto.close();
             }
