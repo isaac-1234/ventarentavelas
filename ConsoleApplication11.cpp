@@ -2,26 +2,21 @@
 #include<iostream>
 #include<stdlib.h>
 #include<stdio.h>
-#include<windows.h>
+#include<window.h>
 #include<vector>
 #include<cstring>
-#include<conio.h>
-
+#include <conio.h>
 #include "Vector_cliente.h"
 #include "ProductoVector.h"
 #include "vectorLogin.h"
 #include "VectorVenta.h"
 #include "DetalleVector.h"
 #include "FacturaVector.h"
-#include "DetalleVenta.h"
-#include "Producto.h"
 
 using namespace std;
 
 
-
-//CREACION DE OBJETO
-VendedorVector vendedorVector;  //no hay ningun código sobre vendedor
+//CREAR OBJETO
 Vectorlogin VectorLogin;
 ClienteVector cliente_vector;
 ProductoVector vectorProducto;
@@ -34,14 +29,7 @@ void menuPrincipal();
 void salidaSistema();
 void vistaVendedor();
 void vistaCliente();
-void vistaProducto()
-
-//VENDEDOR              //no hay ningun código sobre vendedor
-void adicionarVendedor();
-void ListarVendedor();
-void EliminarVendedor();
-void modificarVendedor();
-void buscarVendedor();
+void vistaProducto();
 //CLIENTE
 void adicionarCliente();
 void modificarCliente();
@@ -73,17 +61,13 @@ void inicioSesion()
     vector<string> usuarios;
     vector<string> claves;
     //AÑADIR USUARIOS AL VECTOR     
-    usuarios.push_back("alexander");
-    usuarios.push_back("leandro");
-    usuarios.push_back("nelly");
-    usuarios.push_back("esteban");
-    usuarios.push_back("fernando");
+    usuarios.push_back("Teresa");
+    usuarios.push_back("Isaac");
+    usuarios.push_back("Caleb");
     //ANADIR CLAVES AL VECTOR
-    claves.push_back("Alexander123");
-    claves.push_back("leandro");
-    claves.push_back("NellyBelen");
-    claves.push_back("Esteban");
-    claves.push_back("Fernando");
+    claves.push_back("hitte123");
+    claves.push_back("isaac1996");
+    claves.push_back("Kleb2024");
 
     string usuario;
     string contrasenia;
@@ -105,9 +89,9 @@ void inicioSesion()
         gotoxy(22, 9);  getline(cin, usuario);
         gotoxy(26, 10);  caracter = _getch();
         contrasenia = "";
-        while (caracter != 13)//el 13 es la tecla enter en el codigo ascii
+        while (caracter != 13)// 13 es enter en codigo ascii
         {
-            if (caracter !=8)//EL 8 SIGNIFICA EN BACKSPACE
+            if (caracter !=8)//EL 8 es BACKSPACE
             {
                 contrasenia.push_back(caracter);
                 cout << "*";
@@ -133,9 +117,9 @@ void inicioSesion()
         if (!ingreso)
         {
             //system("cls");
-            gotoxy(4, 13); cout << "EL USUARIO O CONTRASENIA SON INCORRECTOS" << endl;
+            gotoxy(4, 13); cout << "USUARIO O CONTRASENIA SON INCORRECTOS" << endl;
             gotoxy(4, 14); cout << "**INTENTOS**:" << endl;
-            gotoxy(4, 15); cout << intento + 1 << " de 3 intentos" << endl;
+            gotoxy(4, 15); cout << intento + 1 << " de 3 intentos permitidos" << endl;
             cin.get();
             intento++;
         }
@@ -153,7 +137,7 @@ void inicioSesion()
     }
     else
     {
-        cout << "Has pasado el limite de intentos (MAXIMO 3 INTENTOS)" << endl;
+        cout << "Has usado los intentos permitidos (MAXIMO 3 INTENTOS)" << endl;
         salidaSistema();
     }
 
@@ -162,7 +146,7 @@ void inicioSesion()
 void menuPrincipal()
 {
     int opcion_menu;
-    system("vls");
+    system("cls");
 
     gotoxy(4, 5);   cout << "**********************************";
     gotoxy(4, 6);   cout << "||                              ||";
@@ -170,7 +154,7 @@ void menuPrincipal()
     gotoxy(4, 8);   cout << "||                              ||";
     gotoxy(4, 9);   cout << "||      1.Vendedor              ||";
     gotoxy(4, 10);  cout << "||      2.Cliente               ||";
-    gotoxy(4, 11);  cout << "||      3.Almacen               ||";
+    gotoxy(4, 11);  cout << "||      3.Producto              ||";
     gotoxy(4, 12);  cout << "||      4.Venta                 ||";
     gotoxy(4, 13);  cout << "||      5.Salida del sistema    ||";
     gotoxy(4, 14);  cout << "**********************************";
@@ -189,11 +173,11 @@ void menuPrincipal()
     case 3:
         vistaProducto();
         break;
-    case 4
+    case 4:
         vistaVenta();
         break;
     case 5:
-        gotoxy(2, 24); cout << "/*/*GRACIAS POR SU PREFERENCIA,VentaMas*/*/" << endl;
+        gotoxy(2, 24); cout << "/*/*GRACIAS*/*/" << endl;
         system("pause");
         salidaSistema();
 
@@ -276,20 +260,19 @@ void adicionarCliente()
     string domicilio;
     string municipio;
     string estado;
-    int telefono;
+    string telefono;
     string rfc_cliente;
     string tipo_nuevo_frecuente;
     int id_cliente;
+    int cod;
     string rpta;
     cout << "\t==ANIADIR CLIENTES==\t" << endl;
     do
     {
         cout << "\n";
-        id_cliente = cliente_vector.getCorrelativo();
-        cout << "ID_CLIENTE: " << "[" << id_cliente << "]" << endl;
+        cod = cliente_vector.getCorrelativo();
+        cout << "ID_CLIENTE: " << "[" << cod << "]" << endl;
         cin.ignore();
-        cout << "Ingrese el ID del cliente: "; getline(cin, id_cliente);
-        cout << "                                                       " << endl;
         cout << "Ingrese el NOMBRE del cliente: "; getline(cin, nombre);
         cout << "                                                       " << endl;
         cout << "Ingrese los APELLIDOS del cliente: "; getline(cin, apellidos);
@@ -316,7 +299,7 @@ void adicionarCliente()
         cliente.setTelefono(telefono);
         cliente.setRfc_cliente(rfc_cliente);
         cliente.setTipo_nuevo_frecuente(tipo_nuevo_frecuente);
-        cliente.setId_cliente(id_cliente);
+        cliente.setId_cliente(cod);
 
         cliente_vector.agregar(cliente); //Ingresar los objetos al vector
         cliente_vector.grabarEnArchivo(cliente); //Grabar en archivo
@@ -326,12 +309,12 @@ void adicionarCliente()
     } while (rpta == "SI" || rpta == "si");
     vistaCliente();
 }
-void modificarCliente() //CONDICIONAR LA, MODIFICACION, ARREGLAR LA INTERFAZ, PRESENTAR "ERROR"
+void modificarCliente() //Modificar registro del cliente, o presentar "ERROR"
 {
     system("cls");
-    int id_cliente;
-    cout << " Ingrese el id_cliente a modificar ";cin >> id_cliente;
-    Cliente1 objAModificar = cliente_vector.buscarPorId_cliente(id_cliente);
+    int cod;
+    cout << " Ingrese el id_cliente a modificar ";cin >> cod;
+    Cliente1 objAModificar = cliente_vector.buscarPorId_cliente(cod);
 
     cout << "\t==REGISTRO ENCONTRADO==\t" << endl;
     cout << "nombre: " << objAModificar.getNombre() << "\n";
@@ -349,7 +332,7 @@ void modificarCliente() //CONDICIONAR LA, MODIFICACION, ARREGLAR LA INTERFAZ, PR
     string domicilioModificado;
     string municipioModificado;
     string estadoModificado;
-    int telefonoModificado;
+    string telefonoModificado;
     string rfc_clienteModificado;
     string tipo_nuevo_frecuenteModificado;
     cout << "\t *MODIFICAR CAMPOS*\n";
@@ -376,7 +359,7 @@ void modificarCliente() //CONDICIONAR LA, MODIFICACION, ARREGLAR LA INTERFAZ, PR
     system("pause");
     vistaCliente();
 }
-void ListarCliente() //ELIMINAR EL ESPACIO EN BLANCO EN LOS CARACTERES Y PONER ESTRELLITAS
+void ListarCliente() //Elimina espacios en blanco sustituye con asterisco
 {
     cout << "\t==CLIENTES REGISTRADOS==\t" << endl;
     if (cliente_vector.tamanio() ==0)
@@ -420,11 +403,11 @@ void ListarCliente() //ELIMINAR EL ESPACIO EN BLANCO EN LOS CARACTERES Y PONER E
 }
 void EliminarCliente()
 {
-    int id_cl;
+    int cod;
     string rpt;
     system("cls");
-    cout << "\t Ingrese el id_cliente a eliminar: "; cin >> id_cl;
-    Cliente1 ClienteAEliminar = cliente_vector.buscarPorId_cliente(id_cl);
+    cout << "\t Ingrese el id_cliente a eliminar: "; cin >> cod;
+    Cliente1 ClienteAEliminar = cliente_vector.buscarPorId_cliente(cod);
     cout << "\n";
     if (ClienteAEliminar.getNombre() == "ERROR")
     {
@@ -465,10 +448,10 @@ void EliminarCliente()
 void buscarCliente()//ARREGLAR INTERFAZ
 {
     system("cls");
-    int id_cl;
+    int cod;
     cout << "\t==BUSCAR CLIENTE REGISTRADO==\t" << endl;
-    cout << "Ingresar el ID del cliente a buscar: "; cin >> id_cl;
-    Cliente1 cli = cliente_vector.buscarPorId_cliente(id_cl);
+    cout << "Ingresar el ID del cliente a buscar: "; cin >> cod;
+    Cliente1 cli = cliente_vector.buscarPorId_cliente(cod);
     if (cli.getNombre() != "Error")
     {
         cout << "\t**DATOS DEL CLIENTE ENCONTRADO**\t\n";
@@ -514,7 +497,7 @@ void vistaProducto() //corresponde al renglon 682
     switch (op_menuProductos)
     {
     case 1:
-        system("cls";)
+        system("cls");
         adicionarProducto();
         break;
     case 2:
@@ -845,6 +828,8 @@ void vistaVenta() //es el renglon 908
                 cout << "**GRACIAS POR SU COMPRA!**" endl;
                 system("pause");
 
+         
             }
+    }
 
 }
