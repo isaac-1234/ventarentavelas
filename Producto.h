@@ -1,6 +1,6 @@
 #include<string>
 using namespace std;
- 
+
 class Producto
 {
 private:
@@ -9,21 +9,21 @@ private:
     float precio;
     int disponibilidad_dias;
     string tipo_venta_renta;
-    string id_producto;
+    int id_producto;
     int cantidad;
 public:
     Producto()
     {
- 
+
     }
     ~Producto()
     {
- 
+
     }
     void setCantidad(int cantidad){
         this->cantidad = cantidad;
     }
-    void setId_producto(string id_producto)
+    void setId_producto(int id_producto)
     {
         this->id_producto = id_producto;
     }
@@ -47,7 +47,7 @@ public:
     {
         this->tipo_venta_renta = tipo_venta_renta;
     }
-        int getCantidad()
+    int getCantidad()
     {
         return this->cantidad;
     }
@@ -71,7 +71,7 @@ public:
     {
         return this->disponibilidad_dias;
     }
-    string getId_producto()
+    int getId_producto()
     {
         return this->id_producto;
     }
