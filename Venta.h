@@ -3,25 +3,25 @@ using namespace std;
 class Venta
 {
 private:
-    int id_venta;
+    int codVenta;
     string factura;
     string fecha;
     string estatus;
     int tiempo_entrega;
-    int id_cliente;
+    int codCliente;
     float total;
 public:
     Venta()
     {
- 
+
     }
     ~Venta()
     {
- 
+
     }
-    void setId_venta(int _id_venta)
+    void setcodVenta(int _codVenta)
     {
-        id_venta = _id_venta;
+        codVenta = _codVenta;
     }
     void setFactura(string _factura)
     {
@@ -39,17 +39,17 @@ public:
     {
         tiempo_entrega = _tiempo_entrega;
     }
-    void setId_cliente(int _id_cliente)
+    void setcodCliente(int _codCliente)
     {
-        id_cliente = _id_cliente;
+        codCliente = _codCliente;
     }
     void setTotal(float _total)
     {
         total = _total;
     }
-    int getId_venta()
+    int getcodVenta()
     {
-        return this->id_venta;
+        return this->codVenta;
     }
     string getFactura()
     {
@@ -71,9 +71,9 @@ public:
     {
         return this->tiempo_entrega;
     }
-    int getId_cliente()
+    int getcodCliente()
     {
-        return this->id_cliente;
+        return this->codCliente;
     }
     float getTotal()
     {
