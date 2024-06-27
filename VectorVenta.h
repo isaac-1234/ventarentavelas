@@ -1,6 +1,3 @@
-#include<iostream> #include<vector> #includ... de Silvia MDL
-Silvia MDL
-10:50 p. m.
 #include<iostream>
 #include<vector>
 #include "Venta.h"
@@ -37,7 +34,7 @@ public:
                     }
                 }
                 archivoVenta.close();
-            }
+            } 
         }
         catch(exception e)
         {
@@ -68,7 +65,7 @@ public:
             {
                 for (Venta c : vectorVenta)
                 {
-                    archivoVenta << c.getFactura()<<";"<<c.getFecha()<<";"<<c.getEstatus()<<";"<<c.getId_venta()<<";"<<c.getTiempo_entrega()<<";"<<c.getId_cliente()<<";"<<c.getTotal()<<";"<< end1;
+                    archivoVenta << c.getFactura()<<";"<<c.getFecha()<<";"<<c.getEstatus()<<";"<<c.getId_venta()<<";"<<c.getTiempo_entrega()<<";"<<c.getId_cliente()<<";"<<c.getTotal()<<";"<< endl;
                 }
                 archivoVenta.close();
             }
@@ -103,14 +100,14 @@ public:
                         }
                         //Crear un objeto tipo Cliente
                         Venta venta;
-                        venta.setFactura(std::stoi(temporal[0]));
-                        venta.setFecha(std::stoi(temporal[1]));
-                        venta.setEstatus(std::stoi(temporal[2]));
+                        venta.setFactura(temporal[0]);
+                        venta.setFecha(temporal[1]);
+                        venta.setEstatus(temporal[2]);
                         venta.setId_venta(std::stoi(temporal[3]));
                         venta.setTiempo_entrega(std::stoi(temporal[4]));
                         venta.setId_cliente(std::stoi(temporal[5]));
                         venta.setTotal(std::stof(temporal[6]));
- 
+
                         agregar(venta);
                     }
                 }
@@ -123,5 +120,5 @@ public:
         }
         
     }
- 
+
 };
