@@ -6,7 +6,7 @@
 using namespace std;
 using std::stof;
 using std::stoi;
- 
+
 class DetalleVector
 {
 private:
@@ -14,7 +14,7 @@ private:
 public:
     DetalleVector()
     {
- 
+
     }
     void add(DetalleVenta obj)
     {
@@ -28,7 +28,7 @@ public:
     {
         return detalleVector.size();
     }
- 
+
     void grabarArchivo()
     {
         try
@@ -39,7 +39,7 @@ public:
             {
                 for (DetalleVenta l : detalleVector)
                 {
-                    archivoDetalle << l.getId_venta() << ";" << l.getNombre_producto() << ";" << l.getId_producto() << ";" << l.getCantidad() << ";" << l.getPrecio() << ";" << endl;
+                    archivoDetalle << l.getcodVenta() << ";" << l.getNombre_producto() << ";" << l.getcodProducto() << ";" << l.getCantidad() << ";" << l.getprecioVen() << ";" << endl;
                 }
                 archivoDetalle.close();
             }
@@ -74,12 +74,12 @@ public:
                         }
                         //Crear un objeto tipo Cliente
                         DetalleVenta detalle;
-                        detalle.setId_venta(std::stoi(temporal[0]));
+                        detalle.setcodVenta(std::stoi(temporal[0]));
                         detalle.setNombre_producto(temporal[1]);
-                        detalle.setId_producto((temporal[2]));
+                        detalle.setcodProducto(std::stoi(temporal[2]));
                         detalle.setCantidad(std::stoi(temporal[3]));
-                        detalle.setPrecio(std::stof(temporal[4]));
- 
+                        detalle.setprecioVen(std::stof(temporal[4]));
+
                         add(detalle);
                     }
                 }
@@ -101,7 +101,7 @@ public:
             {
                 for(DetalleVenta x : detalleVector)
                 {
-                    archivoDetalle << x.getId_venta() <<"." <<x.getId_producto() << "." << x.getCantidad() << "." << x.getPrecio() << "." << "\n";
+                    archivoDetalle << x.getcodVenta() <<"." <<x.getcodProducto() << "." << x.getCantidad() << "." << x.getprecioVen() << "." << "\n";
                 }
                 archivoDetalle.close();
             }
@@ -112,7 +112,7 @@ public:
         }
     }
     void listarProdVector(DetalleVenta obj){
-        cout << "Codigo del producto: " << obj.getId_producto() << endl;
+        cout << "Codigo del producto: " << obj.getcodProducto() << endl;
         cout << "Cantidad del producto: " << obj.getCantidad() << endl;
         cout << "Subtotal: " << obj.getSubTotal() << endl;
     }
