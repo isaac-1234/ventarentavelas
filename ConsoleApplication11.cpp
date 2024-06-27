@@ -12,6 +12,7 @@
 #include "VectorVenta.h"
 #include "DetalleVector.h"
 #include "FacturaVector.h"
+#include "DetalleVenta.h"
 
 using namespace std;
 
@@ -345,7 +346,7 @@ void modificarCliente() //Modificar registro del cliente, o presentar "ERROR"
     cout << "Ingrese el rfc nuevo: ";getline(cin, rfc_clienteModificado);
     cout << "Ingrese el tipo nuevo: ";getline(cin, tipo_nuevo_frecuenteModificado);
 
-    bool estado = cliente_vector.modificar(objAModificar, nombreModificado, apellidosModificado, domicilioModificado, municipioModificado, estadoModificado,telefonoModificado, rfc_clienteModificado, tipo_nuevo_frecuenteModificado);
+    bool estado = cliente_vector.modificar(objAModificar, nombreModificado, apellidosModificado, domicilioModificado, municipioModificado, estadoModificado, telefonoModificado, rfc_clienteModificado, tipo_nuevo_frecuenteModificado);
     if (estado = true)
     {
         cout << "Registro del cliente modificado correctamente \n";
@@ -529,7 +530,7 @@ void vistaProducto() //corresponde al renglon 682
 void adicionarProducto()
 {
     //Crear Variables
-    string id_producto;
+    int code;
     string nombre_Producto;
     string origen_Stock_WO_Compra;
     float precio;
@@ -540,11 +541,11 @@ void adicionarProducto()
     //Crear el objeto de la clase
     do
     {
-        cout << "\t===AGREGAR PRODUCTOS AL ALMACEN===\t" << endl;
+        cout << "\t===AGREGAR PRODUCTOS===\t" << endl;
         //Entrada de datos
-        id_producto = vectorProducto.getCorrelativo();
-        cout << "Ingresar ID del producto:";
-        cin >> id_producto;
+        code = vectorProducto.getCorrelativo();
+
+        cout << "Id_producto["<<"000" << "]" << endl;
 
         cout << "Ingresar Nombre del producto:";
         cin >> nombre_Producto;
@@ -566,7 +567,7 @@ void adicionarProducto()
 
         Producto producto; /*crear el Objeto*/
 
-        producto.setId_producto(id_producto);
+        producto.setId_producto(code);  //min 32
         producto.setNombre_producto(nombre_Producto);
         producto.setOrigen_stock_wo_compra(origen_Stock_WO_Compra);
         producto.setPrecio(precio);
@@ -583,23 +584,23 @@ void adicionarProducto()
 
     } while (rpta == "SI" || rpta =="si");
     //VOLVER AL MENU
-    vistaProducto();
+    vistaProducto(); //Renglon771
 }
 void modificarProducto()
 {
     system("cls");
-    string id_producto;
+    int cod;
     string rpt;
     do
     {
-        cout << "\t==MODIFICAR DATOS DEL PRODUCTO"==\t" << endl;
+        cout << "\t==MODIFICAR DATOS DEL PRODUCTO==\t" << endl;
         cout << "INGRESAR EL ID_PRODUCTO A MODIFICAR: ";
-        cin >> id_producto;
-        Producto p = vectorProducto.buscarPorId_producto(id_producto);
+        cin >> cod;
+        Producto p = vectorProducto.buscarPorId_producto(cod);
 
         string nombre_productoModificado;
         string origen_stock_wo_compraModificado;
-        float precioModificado;
+        float price;
         int disponibilidad_diasModificado;
         string tipo_venta_rentaModificado;
 
@@ -610,7 +611,7 @@ void modificarProducto()
         cout << "--------------------------------------------------" << endl;
         cout << "Origen_stock_wo_compra: " << p.getOrigen_stock_wo_compra() << endl;
         cout << "--------------------------------------------------" << endl;
-        cout << "Precio: " << p.getPrecio() << endl;
+        cout << "Precio: " << "s/. " << p.getPrecio() << endl;
         cout << "--------------------------------------------------" << endl;
         cout << "Disponibilidad_dias: " << p.getDisponibilidad_dias() << endl;
         cout << "--------------------------------------------------" << endl;
@@ -625,12 +626,12 @@ void modificarProducto()
         cout << "ORIGEN_STOCK_WO_COMPRA MODIFICADO:";
         cin >> origen_stock_wo_compraModificado;
         cout << "PRECIO MODIFICADO:";
-        cin >> precioModificado;
+        cin >> price;
         cout << "DISPONIBILIDAD_DIAS MODIFICADO:";
         cin >> disponibilidad_diasModificado;
         cout << "TIPO_VENT_RENTA MODIFICADO:";
         cin >> tipo_venta_rentaModificado;
-        bool estado = vectorProducto.modificar(p, nombre_productoModificado, precioModificado);
+        bool estado = vectorProducto.modificar(p, nombre_productoModificado, price);
         if (estado = true)
         {
             cout << "**REGISTRO MODIFICADO SATISFACTORIAMENTE**" << endl;
@@ -662,10 +663,10 @@ void ListarProducto()
     {
         for (int i = 0;i < vectorProducto.rows(); i++)
         {
-            cout << "Id_producto:" << "000000" << vectorProducto.get(i).getId_producto() << "\n";
+            cout << "Id_producto:" << "000" << vectorProducto.get(i).getId_producto() << "\n";
             cout << "Nombre_producto:" << vectorProducto.get(i).getNombre_producto() << "\n";
             cout << "Origen_stock_wo_compra:" << vectorProducto.get(i).getOrigen_stock_wo_compra() << "\n";
-            cout << "Precio:" << vectorProducto.get(i).getPrecio() << "\n";
+            cout << "Precio:" << "S/. " << vectorProducto.get(i).getPrecio() << "\n";
             cout << "Disponibilidad_dias<:" << vectorProducto.get(i).getDisponibilidad_dias() << "\n";
             cout << "Tipo_venta_renta:" << vectorProducto.get(i).getTipo_venta_renta() << "\n";
             cout << "*****************************" << endl;
@@ -708,13 +709,8 @@ void vistaVenta() //es el renglon 908
         Cliente1 cliente = cliente_vector.buscarPorId_cliente(code);
         cout << "CLIENTE: " << cliente.getId_cliente() << " " << cliente.getNombre() << " " << cliente.getApellidos() << " " << cliente.getDomicilio() << " " << cliente.getEstado() << " " << cliente.getMunicipio() << " " << cliente.getRfc_cliente() << " " << cliente.getTelefono() << " " << cliente.getTipo_nuevo_frecuente() << "\n";
 
-        cout << "************************************************ << endl;
+        cout << "************************************************" << endl;
 
-        cout << "INGRESAR CODIGO DEL VENDEDOR: ";  //no hay nada sobre vendedor
-        cin >> codigo;
-        Vendedor ven = vendedorVector.buscarPorCodigo(code);
-        cout << "VENDEDOR: " << ven.getNombre() << " " << ven.getApellido() << endl;
-        cout << "\n";
 
         cout << "\t==PRODUCTOS EN VENTA==\t" << endl;
         do
@@ -755,11 +751,11 @@ void vistaVenta() //es el renglon 908
             {
                 c = ventaVector.correlativo();
                 DetalleVenta detalle;
-                detalle.setId_venta(c+1);
+                detalle.setcodVenta(c+1);
                 detalle.setNombre_producto(p.getNombre_producto());
-                detalle.setId_producto(codes);
+                detalle.setcodProducto(codes);
                 detalle.setCantidad(cantidad);
-                detalle.setPrecio(p.getPrecio());
+                detalle.setprecioVen(p.getPrecio());
                 detalleVector.add(detalle);
                 total += detalle.getSubTotal();
                 detalleVector.listarProdVector(detalle);
@@ -779,9 +775,8 @@ void vistaVenta() //es el renglon 908
         detalleVector.grabarArchivo();
 
         Venta venta;
-        venta.setId_venta(c+1);
-        venta.setId_cliente(code);
-        venta.setId_Vendedor(codigo); //no tenemos nada de vendedor
+        venta.setcodVenta(c+1);
+        venta.setcodCliente(code);
         venta.setFecha(fecha);
         venta.setTotal(total);
         ventaVector.agregar(venta);
@@ -790,20 +785,19 @@ void vistaVenta() //es el renglon 908
         system("cls");
 
         cout << "**FACTURA**" << endl;
-        venta.setId_venta(c+1);
+        venta.setcodVenta(c+1);
         cout << "Codigo de venta:  F00" << c+1;
         cout << "\n";
         cout << "RFC del cliente: " << cli.getRfc_cliente() << endl;
         cout << "Nombre del cliente: " << cli.getNombre() + " " + cli.getApellidos() << endl;
-        cout << "Nombre del vendedor: " << ven.getNombre() + " " + ven.getApellidos () << endl;
-        cout << "PRODUCTOS: " << end1;
+        cout << "PRODUCTOS: " << endl;  //Renglon1038
 
         for (int i=0; i<detalleVector.rows();i++)
         {
-            cout<<"Codigo del producto: "<<detalleVector.get(i).getId_producto() << endl;
+            cout<<"Codigo del producto: "<<detalleVector.get(i).getcodProducto() << endl;
             cout<<"Nombre del producto: " << detalleVector.get(i).getNombre_producto() << endl;
             cout<<"Cantidad del producto: " <<detalleVector.get(i).getCantidad() << endl;
-            cout <<"Precio de venta unitario: " <<detalleVector.get(i).getPrecio() << endl;
+            cout <<"Precio de venta unitario: " <<detalleVector.get(i).getprecioVen() << endl;
             cout <<"Subtotal: " <<detalleVector.get(i).getSubTotal() << endl;
         }
         cout << "TOTAL: " << "$ " << total << endl;
@@ -813,19 +807,19 @@ void vistaVenta() //es el renglon 908
 
             if (estado == 1)
             {
-                cout << "**GRACIAS POR SU VISITA!**" endl;
+                cout << "**GRACIAS POR SU VISITA!**" << endl;
                 Factura factura;
 
-                factura.setId_venta(c+1);
+                factura.setCodVenta(c+1);
                 factura.setRfc_cliente(cli.getRfc_cliente());
-                factura.setNombre(cli.getNombre());
-                factura.setApellidos(cli.getApellidos());
+                factura.setNombreCli(cli.getNombre());
+                factura.setApellidosCli(cli.getApellidos());
                 factura.settotal(total);
                 factura.setEstado(estado);
 
                 facturaVector.add(factura);
                 facturaVector.grabarArchivo(factura);
-                cout << "**GRACIAS POR SU COMPRA!**" endl;
+                cout << "**GRACIAS POR SU COMPRA!**" << endl;
                 system("pause");
 
          
