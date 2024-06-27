@@ -45,14 +45,14 @@ public:
             int i;
             size_t posi; //ALMACENAR CANTIDAD MAXIMA DE UNA CADENA
             string linea;
-            string temporal[2]; //NUMERO DE ATRIBUTOS DE LA CLASE
+            string temporal[2];
             fstream archivoLogin;
             archivoLogin.open("USUARIOS",ios::in);
             if(archivoLogin.is_open())
             {
                 while(!archivoLogin.eof())
                 {
-                    while(getline(archivoLogin,linea))//PARA QUE LOS DATOS SE GUARDENN EN LINEAS, COMO LINEA 1, CONSECUTIVAMENTE...
+                    while(getline(archivoLogin,linea))//para que los datos se guarden por renglones
                     {
                         i=0;
                         while((posi = linea.find(".")) != string::npos) //ESTA FUNCION PARTE LA LINEA HASTA ENCONTRAR EL PUNTO
