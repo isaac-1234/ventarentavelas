@@ -82,7 +82,7 @@ public:
             int i;
             size_t posi; //cantidad maxima
             string linea;
-            string temporal[6];
+            string temporal[7];
             fstream archivoVenta;
             archivoVenta.open("Venta.txt", ios::in);
             if (archivoVenta.is_open())
