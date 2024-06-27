@@ -3,63 +3,63 @@ using namespace std;
 class DetalleVenta
 {
 private:
-string id_venta;
+int codVenta;
 string nombre_producto;
-string id_producto;
+int codProducto;
 int cantidad;
-float precio;
+float precioVen;
 public:
 DetalleVenta()
 {
- 
+
 }
 ~DetalleVenta()
 {
- 
+
 }
-void setId_venta(int _id_venta)
+void setcodVenta(int _codVenta)
 {
-    id_venta = _id_venta;
+    codVenta = _codVenta;
 }
-void setId_producto(string _id_producto)
+void setcodProducto(int _codProducto)
 {
-    id_producto = _id_producto;
+    codProducto = _codProducto;
 }
 void setCantidad(int _cantidad)
 {
     cantidad = _cantidad;
 }
-void setPrecio(float _precio)
+void setprecioVen(float _precioVen)
 {
-    precio = _precio;
+    precioVen = _precioVen;
 }
 void setNombre_producto(string _nombre_producto)
 {
     nombre_producto = _nombre_producto;
 }
-string getId_venta()
+int getcodVenta()
 {
-    return this->id_venta;
+    return this->codVenta;
 }
-string getId_producto()
+int getcodProducto()
 {
-    return this->id_producto;
+    return this->codProducto;
 }
 int getCantidad()
 {
     return this->cantidad;
 }
-float getPrecio()
+float getprecioVen()
 {
-    return this->precio;
+    return this->precioVen;
 }
 float getSubTotal()
     {
-        return getPrecio() * getCantidad();
+        return getprecioVen() * getCantidad();
     }
 string getNombre_producto()
 {
     return this->nombre_producto;
 }
- 
+
 };
