@@ -1,18 +1,18 @@
 #include <iostream>
 #include <string>
 #include <cstring>
- 
+
 using namespace std;
 class Factura
 {
 private:
-    int id_venta;
-    string Rfc_cliente;
-    string nombre;
-    string apellidos;
+    int codVenta;
+    string rfc_cliente;
+    string nombreCli;
+    string apellidosCli;
     string nombreVen;
     string apellidoVen;
-    string id_producto;
+    int codProducto;
     string nombre_producto;
     int cantidad;
     float precio;
@@ -20,9 +20,9 @@ private:
     float total;
     int estado;  //posiblemente debe cambiarse a string si se refiere al status del envío y pago
 public:
-    void setId_venta(int _id_venta)
+    void setCodVenta(int _codVenta)
     {
-        id_venta = _id_venta;
+        codVenta = _codVenta;
     }
     void setEstado(int _estado)
     {
@@ -30,27 +30,19 @@ public:
     }
     void setRfc_cliente(string _rfc_cliente)
     {
-        Rfc_cliente = _rfc_cliente;
+        rfc_cliente = _rfc_cliente;
     }
-    void setNombre(string _nombre)
+    void setNombreCli(string _nombreCli)
     {
-        nombre = _nombre;
+        nombreCli = _nombreCli;
     }
-    void setApellidos(string _apelidos)
+    void setApellidosCli(string _apellidosCli)
     {
-        apellidos = _apelidos;
+        apellidosCli = _apellidosCli;
     }
-    void setNombreVen(string _nombreVen)
+    void setCodProducto(int _codProducto)
     {
-        nombreVen = _nombreVen
-    }
-    void setApellidoVen(string _apellidoVen)
-    {
-        apellidosVen = _apellidosVen;
-    }
-    void setid_producto(string _id_producto)
-    {
-        id_producto = _id_producto;
+        codProducto = _codProducto;
     }
     void setnombre_producto(string _nombre_producto)
     {
@@ -63,14 +55,14 @@ public:
     void setsubTotal(float _subtotal)
     {
         subTotal = _subtotal;
-    }
+    } 
     void settotal(float _total)
     {
         total = _total;
     }
-    int getid_venta()
+    int getCodVenta()
     {
-        return id_venta;
+        return codVenta;
     }
     int getestado()
     {
@@ -78,15 +70,14 @@ public:
     }
     string getRfc_cliente()
     {
-        return Rfc_cliente;
+        return rfc_cliente;
     }
-    string getnombre() { return nombre; }
-    string getapellidos() { return apellidos; }
-    string getNombreVen() { return nombreVen; }
-    string getapellidoVen() { return apellidoVen}
-    int getid_producto()
+    string getNombreCli() { return nombreCli; }
+    string getApellidosCli() { return apellidosCli; }
+
+    int getCodProducto()
     {
-        return id_producto;
+        return codProducto;
     }
     string getnombre_producto()
     {
