@@ -13,7 +13,7 @@ private:
 public:
     FacturaVector()
     {
- 
+
     }
     void add(Factura obj)
     {
@@ -37,12 +37,12 @@ public:
             {
                 for (Factura fa : facturaVector)
                 {
-                    archivoFactura << fa.getid_venta() << ";" << fa.getRfc_cliente() << ";" << fa.getnombre() << ";" << fa.getapellidos() << ";" << fa.getNombreVen() << ";" << fa.getapellidoVen() << ";" << fa.getid_producto() << ";" << fa.getnombre_producto() << ";" << fa.getcantidad() << ";" << fa.getsubTotal() << ";" << fa.gettotal() << ";" << fa.getestado() << ";" << endl;
+                    archivoFactura << fa.getCodVenta() << ";" << fa.getRfc_cliente() << ";" << fa.getNombreCli() << ";" << fa.getApellidosCli() << ";" << fa.getCodProducto() << ";" << fa.getnombre_producto() << ";" << fa.getcantidad() << ";" << fa.getsubTotal() << ";" << fa.gettotal() << ";" << fa.getestado() << ";" << endl;
                 }
                 archivoFactura.close();
             }
         }
-        catch (esception e)
+        catch (exception e)
         {
             cout << "¡ERROR AL GRABAR EL REGISTRO!";
         }
@@ -54,7 +54,7 @@ public:
             int i;
             size_t posi; //es la cantidad maxima de conceptos
             string linea;
-            string temporal[8];
+            string temporal[6];
             fstream archivoFactura;
             archivoFactura.open("Factura.txt", ios::in);
             if (archivoFactura.is_open())
@@ -71,15 +71,13 @@ public:
                             i++;
                         }
                         Factura factura;
-                        factura.setId_venta(std::stoi(temporal[0]));
+                        factura.setCodVenta(std::stoi(temporal[0]));
                         factura.setRfc_cliente(temporal[1]);
-                        factura.setNombre(temporal[2]);
-                        factura.setApellidos(temporal[3]);
-                        factura.setNombreVen(temporal[4]);
-                        factura.setApellidoVen(temporal[5]);
-                        factura.settotal(std::stof(temporal[6]));
-                        factura.setEstado(std::stoi(temporal[7]));
- 
+                        factura.setNombreCli(temporal[2]);
+                        factura.setApellidosCli(temporal[3]);
+                        factura.settotal(std::stof(temporal[4]));
+                        factura.setEstado(std::stoi(temporal[5]));
+
                         add(factura);
                     }
                 }
@@ -88,8 +86,9 @@ public:
         }
         catch(exception e)
         {
-            cout << ¡"Ocurrio un ERROR al momentode leer el archivo";
+            cout << "¡Ocurrio un ERROR al momentode leer el archivo";
         }
     }
 };
+
  
