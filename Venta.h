@@ -1,5 +1,8 @@
 #include <iostream>
 using namespace std;
+
+// Remove the duplicate definition of the 'Venta' class
+
 class Venta
 {
 private:
@@ -63,9 +66,9 @@ public:
     {
         return this->estatus;
     }
-    int getId_venta()
+    int getcodVenta()
     {
-        return this->id_venta;
+        return this->codVenta;
     }
     int getTiempo_entrega()
     {

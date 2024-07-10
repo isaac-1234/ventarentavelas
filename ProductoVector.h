@@ -1,3 +1,4 @@
+#pragma once
 #include<iostream>
 #include<fstream>
 #include<vector>
@@ -5,7 +6,6 @@
 using namespace std;
 using std::stoi;
 using std::stof;
-
 class ProductoVector
 {
 

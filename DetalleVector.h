@@ -5,7 +5,14 @@
 #include "DetalleVenta.h"
 using namespace std;
 using std::stof;
+
+#pragma once
+
+
 using std::stoi;
+
+#ifndef DETALLEVECTOR_H
+#define DETALLEVECTOR_H
 
 class DetalleVector
 {
@@ -117,3 +124,5 @@ public:
         cout << "Subtotal: " << obj.getSubTotal() << endl;
     }
 };
+
+#endif // DETALLEVECTOR_H

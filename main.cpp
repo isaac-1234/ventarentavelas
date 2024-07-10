@@ -4,33 +4,32 @@
 #include<vector>
 #include<cstring>
 #include <curses.h> 
-
+//#include <windows.h>
 #include "Vector_cliente.h"
 #include "ProductoVector.h"
-#include "vectorLogin.h"
+#include "VectorLogin.h"
 #include "VectorVenta.h"
 #include "DetalleVector.h"
 #include "FacturaVector.h"
-
+#include "Vector_cliente.h" // Add this line to include the header file
+#include "VendedorVector.h" // Add this line to include the header file for VendedorVector
 using namespace std;
-
-
-
 //CREACION DE OBJETO
-VendedorVector vendedorVector;
+
 Vectorlogin VectorLogin;
+VendedorVector vendedorVector;
 ClienteVector cliente_vector;
 ProductoVector vectorProducto;
 VentaVector ventaVetor;
 DetalleVector detalleVector;
-FacturaVector facturaVector;
+FacturaVector facturaVector;;
 
 //PROTOTIPOS
 void menuPrincipal();
 void salidaSistema();
 void vistaVendedor();
 void vistaCliente();
-void vistaProducto()
+void vistaProducto();
 
 //VENDEDOR
 void adicionarVendedor();
@@ -63,6 +62,7 @@ void gotoxy(int x, int y)
     dwPos.Y = y;
     SetConsoleCursorPosition(hcon, dwPos);
 }
+
 
 void inicioSesion()
 {
@@ -99,7 +99,7 @@ void inicioSesion()
         gotoxy(4, 11);  cout << "||        Bienvenido          ||";
         gotoxy(4, 12);  cout << "********************************";
         gotoxy(22, 9);  getline(cin, usuario);
-        gotoxy(26, 10);  caracter = _getch();
+        gotoxy(26, 10);  caracter = getch();
         contrasenia = "";
         while (caracter != 13)//el 13 es la tecla enter en el codigo ascii
         {
@@ -116,7 +116,7 @@ void inicioSesion()
                     contrasenia = contrasenia.substr(0, contrasenia.length() - 1);
                 }
             }
-            caracter = _getch();
+            caracter = getch();
         }
         for (int i = 0; i < usuarios.size(); i++)
         {
@@ -185,7 +185,7 @@ void menuPrincipal()
     case 3:
         vistaProducto();
         break;
-    case 4
+    case 4:
         vistaVenta();
         break;
     case 5:
@@ -510,7 +510,7 @@ void vistaProducto() //corresponde al renglon 682
     switch (op_menuProductos)
     {
     case 1:
-        system("cls";)
+        system("cls");
         adicionarProducto();
         break;
     case 2:

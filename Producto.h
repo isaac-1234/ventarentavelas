@@ -1,3 +1,6 @@
+#ifndef PRODUCTO_H
+#define PRODUCTO_H
+
 #include<string>
 using namespace std;
 
@@ -76,4 +79,6 @@ public:
         return this->id_producto;
     }
 };
+
+#endif // PRODUCTO_H
 

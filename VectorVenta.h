@@ -1,3 +1,5 @@
+#pragma once
+
 #include<iostream>
 #include<vector>
 #include "Venta.h"
@@ -5,6 +7,7 @@
 using namespace std;
 using std::stof;
 using std::stoi;
+
 class VentaVector
 {
 protected:
@@ -65,7 +68,7 @@ public:
             {
                 for (Venta c : vectorVenta)
                 {
-                    archivoVenta << c.getFactura()<<";"<<c.getFecha()<<";"<<c.getEstatus()<<";"<<c.getId_venta()<<";"<<c.getTiempo_entrega()<<";"<<c.getId_cliente()<<";"<<c.getTotal()<<";"<< endl;
+                    archivoVenta << c.getFactura()<<";"<<c.getFecha()<<";"<<c.getEstatus()<<";"<<c.getcodVenta()<<";"<<c.getTiempo_entrega()<<";"<<c.getcodCliente()<<";"<<c.getTotal()<<";"<< endl;
                 }
                 archivoVenta.close();
             }
@@ -103,9 +106,9 @@ public:
                         venta.setFactura(temporal[0]);
                         venta.setFecha(temporal[1]);
                         venta.setEstatus(temporal[2]);
-                        venta.setId_venta(std::stoi(temporal[3]));
+                        venta.setcodVenta(std::stoi(temporal[3]));
                         venta.setTiempo_entrega(std::stoi(temporal[4]));
-                        venta.setId_cliente(std::stoi(temporal[5]));
+                        venta.setcodCliente(std::stoi(temporal[5]));
                         venta.setTotal(std::stof(temporal[6]));
 
                         agregar(venta);
